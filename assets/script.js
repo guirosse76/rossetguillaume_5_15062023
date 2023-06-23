@@ -34,7 +34,24 @@ let compteur = 0;
 let nombres = slides.length;
 
 // On afficher les dotes
+// Creates dots and add listeners to them
+for (let i = 0; i < nombres; ++i) {
+  var div = document.createElement("div");
+  div.className = "dot";
 
+  document.querySelector("#dots").appendChild(div);
+  //   let dotSelected = dots[0];
+  //   dotSelected.className = "dot_selected";
+
+  //   console.log(compteur);
+
+  //
+  //   dot.addEventListener("click", dotClick.bind(null, i), false);
+}
+
+// allDots[0].classList.add("active-dot");
+
+// fonction pour la fleche de droite
 function slideNext() {
   // On incrémente le compteur
   compteur++;
@@ -42,9 +59,11 @@ function slideNext() {
   if (compteur == nombres) {
     compteur = 0;
   }
+  // appel de la fonction pour changer l'image, le texte et la dot
   changeSlide(compteur);
 }
 
+// fonction pour la fleche de droite
 function slidePrev() {
   // On décrémente le compteur
   compteur--;
@@ -52,9 +71,11 @@ function slidePrev() {
   if (compteur < 0) {
     compteur = nombres - 1;
   }
+  // appel de la fonction pour changer l'image, le texte et la dot
   changeSlide(compteur);
 }
 
+// fonction pour changer image + texte + dot
 function changeSlide(index) {
   const img = slides[index].image;
   const src = (document.getElementById("banner_img").src =
@@ -62,5 +83,8 @@ function changeSlide(index) {
   const texte = document.querySelector("#texte");
   const tagline = slides[index].tagLine;
   texte.innerHTML = tagline;
+
+  const changeDOT = document.querySelector("#dots");
+  console.log(changeDOT);
   // Déplace la dot
 }
