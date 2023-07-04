@@ -37,7 +37,6 @@ let nombres = slides.length;
 for (let i = 0; i < nombres; ++i) {
   var div = document.createElement("div");
   div.className = "dot";
-  // div.id = "dot" + i;
   dotsContainer.appendChild(div);
 }
 
@@ -67,6 +66,7 @@ function slidePrev() {
 
 const dots = document.querySelectorAll(".dot");
 dots[0].classList.add("dot_selected");
+
 // fonction pour changer image + texte + dot
 function changeSlide(index) {
   const img = slides[index].image;
