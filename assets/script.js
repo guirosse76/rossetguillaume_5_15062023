@@ -19,7 +19,7 @@ const slides = [
 ];
 
 // On récupère les dots
-const dot = document.getElementById(".dots");
+const dotsContainer = document.getElementById("dots");
 
 // On récupère les deux flèches
 let next = document.querySelector(".arrow_right");
@@ -34,22 +34,12 @@ let compteur = 0;
 let nombres = slides.length;
 
 // On afficher les dotes
-// Creates dots and add listeners to them
 for (let i = 0; i < nombres; ++i) {
   var div = document.createElement("div");
   div.className = "dot";
-
-  document.querySelector("#dots").appendChild(div);
-  //   let dotSelected = dots[0];
-  //   dotSelected.className = "dot_selected";
-
-  //   console.log(compteur);
-
-  //
-  //   dot.addEventListener("click", dotClick.bind(null, i), false);
+  // div.id = "dot" + i;
+  dotsContainer.appendChild(div);
 }
-
-// allDots[0].classList.add("active-dot");
 
 // fonction pour la fleche de droite
 function slideNext() {
@@ -75,16 +65,21 @@ function slidePrev() {
   changeSlide(compteur);
 }
 
+const dots = document.querySelectorAll(".dot");
+dots[0].classList.add("dot_selected");
 // fonction pour changer image + texte + dot
 function changeSlide(index) {
   const img = slides[index].image;
   const src = (document.getElementById("banner_img").src =
     "./assets/images/slideshow/" + img);
-  const texte = document.querySelector("#texte");
+  const texte = document.getElementById("texte");
   const tagline = slides[index].tagLine;
   texte.innerHTML = tagline;
 
-  const changeDOT = document.querySelector("#dots");
-  console.log(changeDOT);
   // Déplace la dot
+  for (const dot of dots) {
+    dot.classList.remove("dot_selected");
+  }
+
+  dots[index].classList.add("dot_selected");
 }
